@@ -18,17 +18,25 @@ return new class extends Migration
             $table->string('password');
             $table->timestamps();
         });
+        Schema::create('cuisines', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+     
+        });
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cuisine');
+            $table->unsignedBigInteger('cuisine_id');
             $table->text('image_url');
             $table->string('ingredients');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('cuisine_id')->references('id')->on('cuisines');
         });
+      
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
@@ -44,7 +52,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('recipe_id');
-            $table->String("content");
+            $table->string("content");
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -54,7 +62,7 @@ return new class extends Migration
         Schema::create('shopping_lists', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->String("list");
+            $table->string("list");
             $table->timestamps();
     
             $table->foreign('user_id')->references('id')->on('users');

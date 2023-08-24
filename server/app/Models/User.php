@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,4 +59,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function Recipes(){
+        return $this->hasMany(Recipe::class, "user_id"); //this is the foreign key in the bookings table
+    } 
+
 }
