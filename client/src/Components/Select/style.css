@@ -2,6 +2,7 @@
 
 .selector{
     font-family: 'Poppins', sans-serif;
+    width:100px;
     padding: 0.5rem 0.25rem;
     text-align: center;
     border: none;

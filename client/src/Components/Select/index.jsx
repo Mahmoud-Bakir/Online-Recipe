@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./style.css"
 
-const Select = () => {
+const Select = ({onSelectChange}) => {
   const [cuisines, setCuisines] = useState([]);
 
+  const handleSelect = (e) => {
+    const selectedValue = e.target.value;
+    onSelectChange(selectedValue); 
+  };
 
   useEffect(() => {
     const getCuisines = async () => {
@@ -29,7 +34,7 @@ const Select = () => {
   return (
     <div className="part-selector">
       <label htmlFor="">Cuisine</label>
-      <select className="selector" name="">
+      <select className="selector" onChange={handleSelect}>
         {cuisines.map((option) => (
           <option key={option.id} value={option.id}>
             {option.name}

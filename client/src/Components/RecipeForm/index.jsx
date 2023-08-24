@@ -17,14 +17,15 @@ const RecipeForm = () => {
 
   const defaultState = {
     name: "",
-    author: "",
+    cuisine_id: "",
     image_url: "", 
-    description: "",
-    likes: 0,
-    user_id: id,
+    ingredients: "",
   };
   const [data, setData] = useState(defaultState);
 
+  const handleChange = (selectedValue) => {
+  setData({ ...data, cuisine_id: selectedValue });
+  }
   const handleDataChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
     console.log(data);
@@ -41,15 +42,14 @@ const RecipeForm = () => {
     }
   };
 
-  const handleAddBook = async () => {
+  const handleAddRecipe = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/users/add_book',
+        'http://127.0.0.1:8000/api/user/add_recipe',
         data,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
           },
         }
       );
@@ -81,15 +81,15 @@ const RecipeForm = () => {
           />
         </div>
         <div className="part">
-          <Select/>
+          <Select onSelectChange={handleChange}/>
         </div>
         <div className="part">
           <Partition
-            Name={"description"}
+            Name={"ingredients"}
             Itype={"text"}
-            holder={"Please enter a description"}
-            lab={"Description"}
-            value={data.description}
+            holder={"Please enter the ingredients"}
+            lab={"Ingredients"}
+            value={data.ingredients}
             onChange={handleDataChange}
           />
         </div>
@@ -103,7 +103,7 @@ const RecipeForm = () => {
             onChange={handleImageChange}
           />
         </div>
-        <Button className="button-register black" name={"Add"} onSubmit={handleAddBook} />
+        <Button className="button-register black" name={"Add Recipe"} onSubmit={handleAddRecipe} />
      </div> 
     </>
   );
