@@ -1,10 +1,9 @@
 .button-register{
-    background-color:#ffe120;;
     outline:none;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 221, 1);
     width: 20%;
     padding: 3%;
     font-size: large;
@@ -12,6 +11,9 @@
     text-align: center;
     margin-top: 20px;
 }
+.black{
+    background-color: black;
+}
 .button-register:hover{
-    background-color: #dabd00;;
+    background-color: #525252;;
 }

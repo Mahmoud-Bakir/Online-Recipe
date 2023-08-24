@@ -64,12 +64,12 @@ const LoginForm = ({handleToggle}) => {
             onChange={handleDataChange}
           />
         </div>
-        <Button name={"Log in"} onSubmit={handleLogin} />
+        <Button className="button-register black" name={"Log in"} onSubmit={handleLogin} />
         <p className="error">{message}</p>
 
         <p className="footer-text">
           Don't have an account?
-          <span onClick={handleToggle}> Sign Up</span>
+          <span className="switch" onClick={handleToggle}> Sign Up</span>
         </p>
         
      </div> 

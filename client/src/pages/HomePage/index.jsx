@@ -1,8 +1,9 @@
 import React from 'react'
+import SideMenu from '../../Components/SideMenu'
 
 const HomePage = () => {
   return (
-    <div>index</div>
+    <SideMenu/>
   )
 }
 

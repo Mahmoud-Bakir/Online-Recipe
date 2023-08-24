@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png"
 import home from "../../assets/feed.svg" 
 import search from "../../assets/search.svg" 
 import profile from "../../assets/profile.svg" 
-import create from "../../assets/create.svg" 
+import recipe from "../../assets/recipe_book.svg" 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ const SideMenu = () =>{
   const navigater = useNavigate()
   const moveToProfile = () => navigater('/profile')
   const moveToHome = () => navigater('/home')
-  const moveToForm = () => navigater('/addPost')
+  const moveToForm = () => navigater('/recipe')
   const moveToSearch = () => navigater('/search')
 
     
@@ -33,8 +33,8 @@ const SideMenu = () =>{
                 <span>Search</span>
             </div>
             <div className="side-menu-subtitle" onClick={moveToForm}>
-                <img src={create} alt="create" />
-                <span>Create</span>
+                <img src={recipe} alt="create" />
+                <span>Create Recipe </span>
             </div>
             <div className="side-menu-subtitle"  onClick={moveToProfile}>
                 <img src={profile} alt="profile"/>

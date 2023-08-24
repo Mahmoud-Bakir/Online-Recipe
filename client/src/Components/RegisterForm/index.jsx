@@ -79,11 +79,11 @@ const RegisterForm = ({handleToggle}) => {
             onChange={handleDataChange}
           />
         </div>
-        <Button name={"Register"} onSubmit={handleRegister} />
+        <Button className="button-register black" name={"Register"} onSubmit={handleRegister} />
         <p className="error">{message}</p>
         <p  className="footer-text"> 
           Already have an account?
-          <span onClick={handleToggle}> Sign In</span>
+          <span className="switch" onClick={handleToggle}> Sign In</span>
         </p>
      </div> 
     </>
