@@ -10,8 +10,6 @@ import Select from "../Select";
 
 const RecipeForm = () => {
   const token = localStorage.getItem('token');
-  const id = localStorage.getItem('id');
-
   const navigater = useNavigate();
   const moveToHome = () => navigater('/home');
 
