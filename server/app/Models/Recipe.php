@@ -12,7 +12,7 @@ class Recipe extends Model
     public function cuisine() {
        return $this->belongsTo(Cuisine::class);
    }
-   
+
    public function likes(){
     return $this->hasMany(Like::class);
    }

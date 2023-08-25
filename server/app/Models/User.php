@@ -62,5 +62,8 @@ class User extends Authenticatable implements JWTSubject
     public function Recipes(){
         return $this->hasMany(Recipe::class, "user_id"); 
     } 
+    public function likes(){
+    return $this->belongsToMany(Recipe::class, 'likes');
+    }
 
 }

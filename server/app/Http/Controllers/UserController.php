@@ -48,20 +48,29 @@ class UserController extends Controller
         $query = $request->input('query');
         
         $results = Recipe::where('name', 'like', "%$query%")
-                        ->orWhereHas('cuisine', function ($subQuery) use ($query) {
-                            $subQuery->where('name', 'like', "%$query%");
-                        })
-                        ->with('cuisine') // Eager load the related cuisine
-                        ->get();
+         ->orWhereHas('cuisine', function ($subQuery) use ($query) {
+             $subQuery->where('name', 'like', "%$query%");
+         })
+         ->with('cuisine') // Eager load the related cuisine
+         ->get();
     
         return response()->json(["result" => $results]);
     }
+
      function getAllRecipes(){
 
     $recipes = Recipe::withCount('likes')->get();
     return response()->json([
         "recipes" => $recipes
     ]);
+    }
+ 
+     function likeRecipe(Request $request){
+      $user = Auth::user();
+      $recipe = Recipe::findOrFail($request->id);
+      $user->likes()->attach($recipe);
+
+    return response()->json(['message' => 'Recipe liked successfully']);
 }
 }
 
