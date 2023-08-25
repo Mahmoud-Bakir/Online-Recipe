@@ -5,10 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cuisine extends Model
+class Like extends Model
 {
-    public function recipes()
-    {
-        return $this->hasMany(Recipe::class);
-    }
+    use HasFactory;
 }

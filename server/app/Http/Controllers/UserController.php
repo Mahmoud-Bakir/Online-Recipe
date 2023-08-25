@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Cuisine;
 use App\Models\Recipe;
+use App\Models\Like;
 use Auth;
 
 class UserController extends Controller
@@ -42,4 +43,25 @@ class UserController extends Controller
         ]);
     }
 
+    function searchRecipe(Request $request)
+    {
+        $query = $request->input('query');
+        
+        $results = Recipe::where('name', 'like', "%$query%")
+                        ->orWhereHas('cuisine', function ($subQuery) use ($query) {
+                            $subQuery->where('name', 'like', "%$query%");
+                        })
+                        ->with('cuisine') // Eager load the related cuisine
+                        ->get();
+    
+        return response()->json(["result" => $results]);
+    }
+     function getAllRecipes(){
+
+    $recipes = Recipe::withCount('likes')->get();
+    return response()->json([
+        "recipes" => $recipes
+    ]);
 }
+}
+

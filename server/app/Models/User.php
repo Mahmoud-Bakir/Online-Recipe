@@ -60,7 +60,7 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
     public function Recipes(){
-        return $this->hasMany(Recipe::class, "user_id"); //this is the foreign key in the bookings table
+        return $this->hasMany(Recipe::class, "user_id"); 
     } 
 
 }

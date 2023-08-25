@@ -16,6 +16,8 @@ Route::group(["middleware" => "auth:api"], function () {
         Route::get("users",[UserController::class, "getAllUsers"]);
         Route::get("cuisines",[UserController::class, "getAllCuisines"]);
         Route::post("add_recipe", [UserController::class, "addRecipe"]);
+        Route::get("search", [UserController::class, "searchRecipe"]);
+        Route::get("recipes", [UserController::class, "getAllRecipes"]);
 
     });
 });
